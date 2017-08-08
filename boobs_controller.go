@@ -9,7 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var boobList = []string{"( o y o )", "( . y . )", "( O Y O )", "( O Y o )"}
+var boobList = []string{
+	"( o y o )", "( . y . )", "( O Y O )",
+	"( O Y o )", "\\./\\./", "(*Y*)", "( . Y . )",
+	"(.Y.)", "(。 ㅅ  。)", "(@ㅅ@)", "(•_ㅅ_•)",
+	"(o)(o)", "(•)(•)", "(.)(.)(.)", "[○][°]",
+	"[°][○]", "( o Y O )", "( + )( + )", "oo",
+	"{ O }{ O }", "( ^ )( ^ )", "(Q)(O)", "(O)(Q)",
+	"(p)(p)", "\\o/\\o/", "(  -  )(  -  )"}
 
 func getBoobs(c *gin.Context) {
 	_int, err := strconv.Atoi(c.Param("amount"))

@@ -3,6 +3,7 @@ package main
 import (
 	"math/rand"
 	"net/http"
+	"os"
 	"strconv"
 	"time"
 
@@ -20,25 +21,38 @@ var boobList = []string{
 
 func getBoobs(c *gin.Context) {
 	sfw := false
+	limit := 5000000
 
-	if c.Request.URL.Query().Get("sfw") == "1" {
+	if len(c.Request.URL.Query().Get("sfw")) > 0 {
 		sfw = true
 	}
 
-	_int, err := strconv.Atoi(c.Param("amount"))
+	if len(os.Getenv("BOOBS_LIMIT")) > 0 {
+		var err error
+		limit, err = strconv.Atoi(os.Getenv("BOOBS_LIMIT"))
 
-	if _int > 500000 {
-		c.JSON(http.StatusTooManyRequests, gin.H{
-			"message": "Too Many Boobs, the limit is currently 500000.",
-		})
-
-		return
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"message": err.Error(),
+			})
+			return
+		}
 	}
+
+	_int, err := strconv.Atoi(c.Param("amount"))
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": err.Error(),
 		})
+		return
+	}
+
+	if _int > limit {
+		c.JSON(http.StatusTooManyRequests, gin.H{
+			"message": "Too Many Boobs, the limit is currently " + strconv.Itoa(limit) + ".",
+		})
+
 		return
 	}
 

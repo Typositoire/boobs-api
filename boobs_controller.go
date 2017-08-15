@@ -27,10 +27,19 @@ func getBoobs(c *gin.Context) {
 
 	_int, err := strconv.Atoi(c.Param("amount"))
 
+	if _int > 500000 {
+		c.JSON(http.StatusTooManyRequests, gin.H{
+			"message": "Too Many Boobs, the limit is currently 500000.",
+		})
+
+		return
+	}
+
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": err.Error(),
 		})
+		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{

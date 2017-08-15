@@ -19,6 +19,12 @@ var boobList = []string{
 	"(p)(p)", "\\o/\\o/", "(  -  )(  -  )"}
 
 func getBoobs(c *gin.Context) {
+	sfw := false
+
+	if c.Request.URL.Query().Get("sfw") == "1" {
+		sfw = true
+	}
+
 	_int, err := strconv.Atoi(c.Param("amount"))
 
 	if err != nil {
@@ -28,18 +34,22 @@ func getBoobs(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"boobs": genBoobs(_int),
+		"boobs": genBoobs(_int, sfw),
 	})
 }
 
-func genBoobs(amount int) []string {
+func genBoobs(amount int, sfw bool) []string {
 	rand.Seed(time.Now().Unix())
 
 	var boob string
 	var boobs []string
 
 	for i := 0; i < amount; i++ {
-		boob = boobList[rand.Intn(len(boobList))]
+		if sfw {
+			boob = "(omit)(omit)"
+		} else {
+			boob = boobList[rand.Intn(len(boobList))]
+		}
 		boobs = append(boobs, boob)
 	}
 

@@ -7,6 +7,11 @@
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/DataDog/datadog-go/statsd",
+			"Comment": "1.1.0-8-gb10af4b",
+			"Rev": "b10af4b12965a1ad08d164f57d14195b4140d8de"
+		},
+		{
 			"ImportPath": "github.com/gin-gonic/gin",
 			"Comment": "v1.1.4-1-gd5b353c",
 			"Rev": "d5b353c5d5a560322e6d96121c814115562501f7"

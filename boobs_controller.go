@@ -86,7 +86,7 @@ func getBoobs(c *gin.Context) {
 		fmt.Println("Unable to send to DD")
 	}
 
-	fmt.Println(redisClient.IncrBy(key, int64(_int)).Err())
+	redisClient.IncrBy(key, int64(_int))
 }
 
 func genBoobs(amount int, sfw bool) []string {

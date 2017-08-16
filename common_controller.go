@@ -7,9 +7,13 @@ import (
 )
 
 func index(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"message": "Boobs as a Service ©2017",
-	})
+	c.HTML(
+		http.StatusOK,
+		"index.html",
+		gin.H{
+			"title": "Boobs like a BaaS",
+		},
+	)
 }
 
 //

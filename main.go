@@ -9,6 +9,10 @@ func main() {
 	// logger and recovery (crash-free) middleware
 	router := gin.Default()
 
+	router.LoadHTMLGlob("templates/*.html")
+	router.Static("/css", "./css")
+	router.Static("/img", "./img")
+
 	router.GET("/", index)
 	router.GET("/health", health)
 

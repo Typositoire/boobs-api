@@ -24,11 +24,13 @@ var boobList = []string{
 func getBoobs(c *gin.Context) {
 	d, err := statsd.New("127.0.0.1:8125")
 
-	defer d.Close()
-
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	defer d.Close()
+
+	var key string
 
 	d.Namespace = "boobs-api."
 	d.Tags = append(d.Tags, "ENV:"+os.Getenv("ENVIRONMENT"))
@@ -39,8 +41,10 @@ func getBoobs(c *gin.Context) {
 	if len(c.Request.URL.Query().Get("sfw")) > 0 {
 		sfw = true
 		d.Tags = append(d.Tags, "rating:sfw")
+		key = "boobs_counter_sfw"
 	} else {
 		d.Tags = append(d.Tags, "rating:nsfw")
+		key = "boobs_counter_nsfw"
 	}
 
 	if len(os.Getenv("BOOBS_LIMIT")) > 0 {
@@ -81,6 +85,8 @@ func getBoobs(c *gin.Context) {
 	if err != nil {
 		fmt.Println("Unable to send to DD")
 	}
+
+	fmt.Println(redisClient.IncrBy(key, int64(_int)).Err())
 }
 
 func genBoobs(amount int, sfw bool) []string {

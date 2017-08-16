@@ -1,8 +1,22 @@
 package main
 
 import (
+	"os"
+	"strings"
+
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis"
 )
+
+var redisStringSplit = strings.Split(os.Getenv("REDIS_URL"), "@")
+var redisAddr = redisStringSplit[1]
+var redisPassword = strings.Split(redisStringSplit[0], ":")[2]
+
+var redisClient = redis.NewClient(&redis.Options{
+	Addr:     redisAddr,
+	Password: redisPassword,
+	DB:       0,
+})
 
 func main() {
 	// Creates a gin router with default middleware:

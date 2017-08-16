@@ -27,6 +27,36 @@
 			"Rev": "d5b353c5d5a560322e6d96121c814115562501f7"
 		},
 		{
+			"ImportPath": "github.com/go-redis/redis",
+			"Comment": "v6.5.7",
+			"Rev": "19c1c2272e00c1aaa903cf574c746cd449f9cd3c"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal",
+			"Comment": "v6.5.7",
+			"Rev": "19c1c2272e00c1aaa903cf574c746cd449f9cd3c"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/consistenthash",
+			"Comment": "v6.5.7",
+			"Rev": "19c1c2272e00c1aaa903cf574c746cd449f9cd3c"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/hashtag",
+			"Comment": "v6.5.7",
+			"Rev": "19c1c2272e00c1aaa903cf574c746cd449f9cd3c"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/pool",
+			"Comment": "v6.5.7",
+			"Rev": "19c1c2272e00c1aaa903cf574c746cd449f9cd3c"
+		},
+		{
+			"ImportPath": "github.com/go-redis/redis/internal/proto",
+			"Comment": "v6.5.7",
+			"Rev": "19c1c2272e00c1aaa903cf574c746cd449f9cd3c"
+		},
+		{
 			"ImportPath": "github.com/golang/protobuf/proto",
 			"Rev": "98fa357170587e470c5f27d3c3ea0947b71eb455"
 		},

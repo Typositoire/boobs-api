@@ -31,16 +31,16 @@ func getBoobs(c *gin.Context) {
 	}
 
 	d.Namespace = "boobs-api."
-	d.Tags = append(d.Tags, "ENV: "+os.Getenv("ENVIRONMENT"))
+	d.Tags = append(d.Tags, "ENV:"+os.Getenv("ENVIRONMENT"))
 
 	sfw := false
 	limit := 5000000
 
 	if len(c.Request.URL.Query().Get("sfw")) > 0 {
 		sfw = true
-		d.Tags = append(d.Tags, "sfw")
+		d.Tags = append(d.Tags, "rating:sfw")
 	} else {
-		d.Tags = append(d.Tags, "nsfw")
+		d.Tags = append(d.Tags, "rating:nsfw")
 	}
 
 	if len(os.Getenv("BOOBS_LIMIT")) > 0 {

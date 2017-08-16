@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
 
+	"github.com/DataDog/datadog-go/statsd"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,11 +22,25 @@ var boobList = []string{
 	"(p)(p)", "\\o/\\o/", "(  -  )(  -  )"}
 
 func getBoobs(c *gin.Context) {
+	d, err := statsd.New("127.0.0.1:8125")
+
+	defer d.Close()
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	d.Namespace = "boobs-api."
+	d.Tags = append(d.Tags, "ENV:"+os.Getenv("ENVIRONMENT"))
+
 	sfw := false
 	limit := 5000000
 
 	if len(c.Request.URL.Query().Get("sfw")) > 0 {
 		sfw = true
+		d.Tags = append(d.Tags, "rating:sfw")
+	} else {
+		d.Tags = append(d.Tags, "rating:nsfw")
 	}
 
 	if len(os.Getenv("BOOBS_LIMIT")) > 0 {
@@ -59,6 +75,12 @@ func getBoobs(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"boobs": genBoobs(_int, sfw),
 	})
+
+	err = d.Count("amount", int64(_int), nil, 1)
+
+	if err != nil {
+		fmt.Println("Unable to send to DD")
+	}
 }
 
 func genBoobs(amount int, sfw bool) []string {

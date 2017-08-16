@@ -8,11 +8,8 @@ import (
 
 func index(c *gin.Context) {
 	c.HTML(
-		// Set the HTTP status to 200 (OK)
 		http.StatusOK,
-		// Use the boobs.html template
 		"index.html",
-		// Pass the data that the page uses (in this case, 'title')
 		gin.H{
 			"title": "Boobs like a BaaS",
 		},

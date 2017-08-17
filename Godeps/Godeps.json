@@ -1,9 +1,9 @@
 {
 	"ImportPath": "github.com/Typositoire/boobs-api",
 	"GoVersion": "go1.8",
-	"GodepVersion": "v75",
+	"GodepVersion": "v79",
 	"Packages": [
-		"./..."
+		"."
 	],
 	"Deps": [
 		{
@@ -12,19 +12,28 @@
 			"Rev": "b10af4b12965a1ad08d164f57d14195b4140d8de"
 		},
 		{
+			"ImportPath": "github.com/gin-contrib/sse",
+			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
+		},
+		{
 			"ImportPath": "github.com/gin-gonic/gin",
-			"Comment": "v1.1.4-1-gd5b353c",
-			"Rev": "d5b353c5d5a560322e6d96121c814115562501f7"
+			"Comment": "v1.2-90-ga8fa424",
+			"Rev": "a8fa424ae529397d4a0f2a1f9fda8031851a3269"
 		},
 		{
 			"ImportPath": "github.com/gin-gonic/gin/binding",
-			"Comment": "v1.1.4-1-gd5b353c",
-			"Rev": "d5b353c5d5a560322e6d96121c814115562501f7"
+			"Comment": "v1.2-90-ga8fa424",
+			"Rev": "a8fa424ae529397d4a0f2a1f9fda8031851a3269"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/json",
+			"Comment": "v1.2-90-ga8fa424",
+			"Rev": "a8fa424ae529397d4a0f2a1f9fda8031851a3269"
 		},
 		{
 			"ImportPath": "github.com/gin-gonic/gin/render",
-			"Comment": "v1.1.4-1-gd5b353c",
-			"Rev": "d5b353c5d5a560322e6d96121c814115562501f7"
+			"Comment": "v1.2-90-ga8fa424",
+			"Rev": "a8fa424ae529397d4a0f2a1f9fda8031851a3269"
 		},
 		{
 			"ImportPath": "github.com/go-redis/redis",
@@ -61,8 +70,9 @@
 			"Rev": "98fa357170587e470c5f27d3c3ea0947b71eb455"
 		},
 		{
-			"ImportPath": "github.com/manucorporat/sse",
-			"Rev": "ee05b128a739a0fb76c7ebd3ae4810c1de808d6d"
+			"ImportPath": "github.com/json-iterator/go",
+			"Comment": "jsoniter-go-0.9.19-18-g8877891",
+			"Rev": "887789156aeca0b292a5080b24e650d856c28933"
 		},
 		{
 			"ImportPath": "github.com/mattn/go-isatty",
@@ -70,8 +80,8 @@
 			"Rev": "fc9e8d8ef48496124e79ae0df75490096eccf6fe"
 		},
 		{
-			"ImportPath": "golang.org/x/net/context",
-			"Rev": "c9b681d35165f1995d6f3034e61f8761d4b90c99"
+			"ImportPath": "github.com/ugorji/go/codec",
+			"Rev": "5efa3251c7f7d05e5d9704a69a984ec9f1386a40"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",
@@ -79,8 +89,8 @@
 		},
 		{
 			"ImportPath": "gopkg.in/go-playground/validator.v8",
-			"Comment": "v8.18.1",
-			"Rev": "5f57d2222ad794d0dffb07e664ea05e2ee07d60c"
+			"Comment": "v8.18.2",
+			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",

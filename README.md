@@ -4,6 +4,9 @@ Flashing boobs legally, inspired by [Dicks API](http://dicks-api.herokuapp.com/)
 ## Flash some boobs!
 Start flashing some boobs [here](https://boobs-api.herokuapp.com/)!
 
+## Live Version
+[HERE](https://boobs-api.herokuapp.com/)
+
 ## Usage
 
 Request:

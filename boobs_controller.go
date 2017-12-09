@@ -21,6 +21,22 @@ var boobList = []string{
 	"{ O }{ O }", "( ^ )( ^ )", "(Q)(O)", "(O)(Q)",
 	"(p)(p)", "\\o/\\o/", "(  -  )(  -  )"}
 
+var boobLeftSides = []string{
+	"{", "(", "[", "\\",
+}
+
+var boobRightSides = []string{
+	"}", ")", "]", "/",
+}
+
+var boobCracks = []string{
+	"y", "Y", "/\\", "ㅅ", ")(", "][", "}{", ")(.)(",
+}
+
+var boobNipples = []string{
+	"o", ".", "O", "0", "。", "+", "p", "-", "*", "•", "^", "°", "○",
+}
+
 func getBoobs(c *gin.Context) {
 	d, err := statsd.New("127.0.0.1:8125")
 
@@ -99,10 +115,44 @@ func genBoobs(amount int, sfw bool) []string {
 		if sfw {
 			boob = "(omit)(omit)"
 		} else {
-			boob = boobList[rand.Intn(len(boobList))]
+			boob = getLeftSide() + getSpacing() + getNipple() + getSpacing() + getCrack() + getSpacing() + getNipple() + getSpacing() + getRightSide()
 		}
 		boobs = append(boobs, boob)
 	}
 
 	return boobs
+}
+
+func getLeftSide() string {
+	rand.Seed(time.Now().UnixNano())
+
+	return boobLeftSides[rand.Intn(len(boobLeftSides))]
+}
+
+func getRightSide() string {
+	rand.Seed(time.Now().UnixNano())
+
+	return boobRightSides[rand.Intn(len(boobRightSides))]
+}
+
+func getCrack() string {
+	rand.Seed(time.Now().UnixNano())
+
+	return boobCracks[rand.Intn(len(boobCracks))]
+}
+
+func getNipple() string {
+	rand.Seed(time.Now().UnixNano())
+
+	return boobNipples[rand.Intn(len(boobNipples))]
+}
+
+func getSpacing() string {
+	rand.Seed(time.Now().UnixNano())
+	spaces := ""
+	for i := 0; i < rand.Intn(2); i++ {
+		spaces += " "
+	}
+
+	return spaces
 }

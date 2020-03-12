@@ -1,3 +1,5 @@
+## This was one of my first projects in Golang that kind of made me love the language. This is a joke and in NO WAY meant to offend anyone.
+
 # Boobs as a Service
 Flashing boobs legally, inspired by [Dicks API](http://dicks-api.herokuapp.com/)
 
